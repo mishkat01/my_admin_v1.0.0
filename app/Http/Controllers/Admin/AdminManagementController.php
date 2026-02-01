@@ -19,6 +19,7 @@ class AdminManagementController extends Controller
 
     public function create()
     {
+        //create new admin
         $roles = Role::all();
         return view('admin.admins.create', compact('roles'));
     }
