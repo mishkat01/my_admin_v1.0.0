@@ -17,6 +17,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']); 
         Route::post('logout', [App\Http\Controllers\Admin\Auth\LoginController::class, 'logout'])->name('logout');
         
+        // User Management Routes
+        Route::middleware(['permission:manage-users'])->resource('users', App\Http\Controllers\Admin\UserManagementController::class)->except(['show', 'create', 'store']);
+        
         // Resource Routes
         Route::middleware(['superadmin'])->group(function () {
              Route::resource('roles', App\Http\Controllers\Admin\RoleController::class);

@@ -47,7 +47,7 @@
 
         <p class="mt-10 text-center text-sm/6 text-gray-400">
           Not a member?
-          <a href="#" class="font-semibold text-indigo-400 hover:text-indigo-300">Start a 14 day free trial</a>
+          <a href="{{ route('register') }}" class="font-semibold text-indigo-400 hover:text-indigo-300">Create an account</a>
         </p>
       </div>
     </div>
