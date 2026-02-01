@@ -36,7 +36,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('logout', [App\Http\Controllers\Admin\Auth\LoginController::class, 'logout'])->name('logout');
         
         // Resource Routes
-        Route::resource('roles', App\Http\Controllers\Admin\RoleController::class);
-        Route::resource('admins', App\Http\Controllers\Admin\AdminManagementController::class);
+        Route::middleware(['superadmin'])->group(function () {
+             Route::resource('roles', App\Http\Controllers\Admin\RoleController::class);
+             Route::resource('admins', App\Http\Controllers\Admin\AdminManagementController::class);
+        });
     });
 });
