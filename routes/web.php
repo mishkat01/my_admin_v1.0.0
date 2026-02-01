@@ -31,8 +31,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     // Authenticated Admin Routes
     Route::middleware('auth:admin')->group(function () {
-        Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard'); // Redirect /admin to dashboard
-        Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']); // Alias
+        Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+        Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']); 
         Route::post('logout', [App\Http\Controllers\Admin\Auth\LoginController::class, 'logout'])->name('logout');
+        
+        // Resource Routes
+        Route::resource('roles', App\Http\Controllers\Admin\RoleController::class);
+        Route::resource('admins', App\Http\Controllers\Admin\AdminManagementController::class);
     });
 });
