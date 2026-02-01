@@ -25,7 +25,7 @@
             </div>
             <div class="ml-4">
                 <h4 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Total Users</h4>
-                <div class="text-3xl font-bold text-gray-900 dark:text-white">0</div> <!-- Placeholder until User model populated -->
+                <div class="text-3xl font-bold text-gray-900 dark:text-white">{{ \App\Models\User::count() }}</div> <!-- Placeholder until User model populated -->
             </div>
         </div>
     </div>

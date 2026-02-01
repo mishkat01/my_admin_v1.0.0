@@ -17,25 +17,25 @@
             @csrf
             
             <div class="space-y-6">
-                <div class="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-750 rounded-lg border border-gray-100 dark:border-gray-700">
+                <div class="flex items-center justify-between p-4 dark:bg-gray-50 bg-gray-750 rounded-lg border border-gray-100 dark:border-gray-700">
                     <div>
                         <h3 class="text-lg font-medium text-gray-900 dark:text-white">User Registration</h3>
                         <p class="text-sm text-gray-500 dark:text-gray-400">Allow new users to register an account.</p>
                     </div>
-                    <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
-                        <input type="checkbox" name="user_registration" id="user_registration" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" {{ ($settings['user_registration'] ?? '0') == '1' ? 'checked' : '' }}/>
-                        <label for="user_registration" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    <div class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" name="user_registration" id="user_registration" class="sr-only peer" {{ ($settings['user_registration'] ?? '0') == '1' ? 'checked' : '' }}>
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 dark:peer-focus:ring-indigo-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600"></div>
                     </div>
                 </div>
 
-                <div class="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-750 rounded-lg border border-gray-100 dark:border-gray-700">
+                <div class="flex items-center justify-between p-4 dark:bg-gray-50 bg-gray-750 rounded-lg border border-gray-100 dark:border-gray-700">
                     <div>
                         <h3 class="text-lg font-medium text-gray-900 dark:text-white">Email Verification</h3>
                         <p class="text-sm text-gray-500 dark:text-gray-400">Require users to verify their email address before accessing the dashboard.</p>
                     </div>
-                    <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
-                        <input type="checkbox" name="email_verification" id="email_verification" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" {{ ($settings['email_verification'] ?? '0') == '1' ? 'checked' : '' }}/>
-                        <label for="email_verification" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    <div class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" name="email_verification" id="email_verification" class="sr-only peer" {{ ($settings['email_verification'] ?? '0') == '1' ? 'checked' : '' }}>
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 dark:peer-focus:ring-indigo-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600"></div>
                     </div>
                 </div>
             </div>
@@ -46,31 +46,4 @@
         </form>
     </div>
 </div>
-
-<style>
-    /* Simple Toggle Switch CSS */
-    .toggle-checkbox:checked {
-        right: 0;
-        border-color: #4f46e5;
-    }
-    .toggle-checkbox:checked + .toggle-label {
-        background-color: #4f46e5;
-    }
-    .toggle-checkbox {
-        right: auto;
-        left: 0;
-        transition: all 0.2s ease-in;
-    }
-    .toggle-label {
-        width: 3rem;
-        height: 1.5rem;
-    }
-    #user_registration:checked ~ .toggle-label, #email_verification:checked ~ .toggle-label {
-        background-color: #4f46e5;
-    }
-    #user_registration:checked.toggle-checkbox, #email_verification:checked.toggle-checkbox {
-        right: 0;
-        border-color: #68D391;
-    }
-</style>
 @endsection
