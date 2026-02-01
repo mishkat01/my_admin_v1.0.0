@@ -45,13 +45,25 @@
 
         <div class="mt-6">
             <h4 class="font-medium text-gray-900 dark:text-white mb-4">Your Permissions:</h4>
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-2 mb-6">
                 @foreach(Auth::guard('admin')->user()->roles->first()->permissions as $permission)
                     <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-gray-200 dark:border-gray-600">
                         {{ $permission->name }}
                     </span>
                 @endforeach
             </div>
+
+            @if(Auth::guard('admin')->user()->hasRole('super-admin'))
+            <h4 class="font-medium text-gray-900 dark:text-white mb-4">Quick Actions (Super Admin):</h4>
+            <div class="flex gap-4">
+                <a href="{{ route('admin.admins.create') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                    + Add New Admin
+                </a>
+                <a href="{{ route('admin.roles.create') }}" class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                    + Add New Role
+                </a>
+            </div>
+            @endif
         </div>
     </div>
 </div>
