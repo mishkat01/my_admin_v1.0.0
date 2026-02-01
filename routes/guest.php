@@ -15,3 +15,10 @@ Route::middleware('guest')->group(function () {
     Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
     Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
 });
+
+// Email Verification Routes
+Route::middleware('auth')->group(function () {
+    Route::get('/email/verify', [App\Http\Controllers\Auth\VerificationController::class, 'notice'])->name('verification.notice');
+    Route::get('/email/verify/{id}/{hash}', [App\Http\Controllers\Auth\VerificationController::class, 'verify'])->middleware(['signed', 'throttle:6,1'])->name('verification.verify');
+    Route::post('/email/verification-notification', [App\Http\Controllers\Auth\VerificationController::class, 'resend'])->middleware(['throttle:6,1'])->name('verification.send');
+});
